@@ -1,3 +1,7 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+
 '''
 
 Depth-first searcher
@@ -30,25 +34,26 @@ T = [[0, 1, 1, 0, 0, 0, 0, 0],
 key = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
 
 
-def traverse(node, tree, direction='down', predecessors=[], target=None):
+def find(node, tree, direction='down', predecessors=[], target=None):
     '''Searches depth-first for a node, printing nodes as it goes'''
 
     if direction == 'down':
         print key[node]
         if key[node] == target:
-            print "Done!"
-            return
+            return                # Escape
     try:
-        nxt = tree[node].index(1) # Childless nodes throw errors
-        tree[node][nxt] = 0 # Mark as visited
-        predecessors.append(node)
-        traverse(nxt, tree, direction='down', predecessors=predecessors, target=target)
-	
-    except ValueError: # Childless node
-        if node - 1 == -1: # Stop (nothing before root)
+        nxt = tree[node].index(1) # First child 
+        tree[node][nxt] = 0       # Mark current as visited
+        predecessors.append(node) 
+        find(node=nxt, tree=tree, direction='down', 
+             predecessors=predecessors, target=target)
+    
+    except ValueError:            # Childless node
+        if node - 1 == -1:        # Stop (nothing before root)
             return None
         else:
             parent = predecessors.pop()
-            traverse(parent, tree, direction='up', predecessors=predecessors, target=target) # Move up
+            find(node=parent, tree=tree, direction='up', 
+                 predecessors=predecessors, target=target)    # Move up
 
-traverse(0, T, target='d')
+find(0, T, target='d')
