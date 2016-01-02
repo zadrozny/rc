@@ -35,14 +35,14 @@ key = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
 
 
 def find(tree, target):
-    stack  = [0]                         # The root
+    stack  = [0] # The root
 
     while True:
         if stack == []:
             print "Sorry", target, "is not in the tree."
             break 
 
-        node = stack.pop(0)              
+        node = stack.pop()              
         
         if key[node] == target:
             print 'Found', key[node]
@@ -51,11 +51,11 @@ def find(tree, target):
         print 'We are at', key[node]
 
         try:
-            # Append children to left of list 
-            stack = [child for child in range(len(T[0])) 
-                  if T[node][child] == 1] + stack
+            # Append children ('youngest' / right-most first) 
+            stack.extend([child for child in range(len(T[0])-1, -1, -1) 
+                  if T[node][child] == 1])
         except:
             pass
 
 
-find(T, 'f')
+find(T, 'h')
