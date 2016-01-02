@@ -45,7 +45,7 @@ def find(tree, target):
         node = stack.pop()              
         
         if key[node] == target:
-            return 'Found', key[node]
+            return 'Found ' + key[node]
 
         print 'We are at', key[node]
 
@@ -54,4 +54,4 @@ def find(tree, target):
                        if T[node][child] == 1]) 
 
 
-print find(T, 'z')
+print find(T, 'h')
