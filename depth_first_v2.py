@@ -42,7 +42,7 @@ def find(tree, target):
             print "Sorry", target, "is not in the tree."
             break 
 
-        node = stack.pop(0)              # Take a sibling
+        node = stack.pop(0)              
         
         if key[node] == target:
             print 'Found', key[node]
@@ -51,10 +51,11 @@ def find(tree, target):
         print 'We are at', key[node]
 
         try:
+            # Append children to left of list 
             stack = [child for child in range(len(T[0])) 
                   if T[node][child] == 1] + stack
         except:
             pass
 
 
-find(0, 'f')
+find(T, 'f')
