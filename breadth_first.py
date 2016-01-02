@@ -40,18 +40,21 @@ def find(tree, target):
 
     while True:
         node = current_gen.pop(0)              # Take a sibling
+        
         if key[node] == target:    
             print 'Target reached:', key[node] # Print row
             return                             # Escape
         else:
             print 'We are at ', key[node] 
 
-        children.extend([child for child in range(len(T[0])) if T[node][child] == 1])
-        if current_gen == []:
-            if children == []:
+        children.extend([child for child in range(len(T[0])) 
+                                if T[node][child] == 1])
+
+        if current_gen == []:                 # No more siblings
+            if children == []:                # No more children
                 break 
             else:
-                current_gen.extend(children) # move to 
+                current_gen.extend(children) # Move to next gen
                 children = []
 
 find(0, 'c')
