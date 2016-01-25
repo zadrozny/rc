@@ -1,3 +1,3 @@
 # RC problems
 
-## [Recurse Center] (www.recurse.com)
+## [Recurse Center] (https://www.recurse.com/)
