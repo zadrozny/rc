@@ -8,12 +8,13 @@ During your interview, you will pair on adding support for a computer player to 
 
 ## Depth-first searcher
 
+
     a
-   / \
+   \/ \\
   b   c
- /|\   \
+ \/\|\\   \\
 d e f   g
-        |
+        \|
         h
 
 Write code that can search a tree of nodes, depth first. The code should take a node name and tree. If it finds the named node, it should return the node. For example, if the code is given "g" and a tree with the structure above, it should return the node named "g".
